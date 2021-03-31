@@ -17,6 +17,8 @@ limits
 -
 thread
 -
+fstream
+-
 opencv2/opencv.hpp
 -
 sl/Camera.hpp

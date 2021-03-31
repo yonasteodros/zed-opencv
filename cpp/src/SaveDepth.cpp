@@ -56,7 +56,7 @@ void processKeyEvent(Camera& zed, char &key) {
 
         case 'b':
         case 'B':
-        saveRgbDepth(zed);
+        //saveRgbDepth(zed,count_save);
         break;
 
         case 'n': // Depth format
@@ -127,7 +127,7 @@ void saveDepth(Camera& zed, std::string filename) {
 		std::cout << "Failed to save depth map... Please check that you have permissions to write at this location (" << filename << "). Re-run the sample with administrator rights under windows" << endl;
 }
 
-void saveRgbDepth(Camera& zed) {
+void saveRgbDepth(Camera& zed, std::fstream& file_out) {
     std::cout << "Saving Depth Map... " << flush;
 
     sl::Mat depth;
@@ -137,6 +137,9 @@ void saveRgbDepth(Camera& zed) {
 
     std::string depthFilename = depthPath + std::to_string(timestamp) + std::string(".png");
     std::string rgbFilename = rgbPath + std::to_string(timestamp) + std::string(".png");
+    std::string depthName = "depth/" + std::to_string(timestamp) + std::string(".png");
+    std::string rgbName = "rgb/" + std::to_string(timestamp) + std::string(".png");
+    std::string assFile = std::to_string(timestamp) + " " + depthName +" " + std::to_string(timestamp) + " " + rgbName + "\n";
 
     zed.retrieveMeasure(depth, sl::MEASURE::DEPTH);
     zed.retrieveImage(image_sbs, sl::VIEW::LEFT);
@@ -155,7 +158,9 @@ void saveRgbDepth(Camera& zed) {
         std::cout << "image has been save under " << rgbFilename << endl;
     else
         std::cout << "Failed to save image... Please check that you have permissions to write at this location (" << rgbFilename << "). Re-run the sample with administrator rights under windows" << endl;
-
+    if(!file_out)
+        std::cerr << "Could not open association file." << endl;
+    file_out.write(assFile.data(), assFile.size());
 }
 
 void saveSbSImage(Camera& zed, std::string filename) {

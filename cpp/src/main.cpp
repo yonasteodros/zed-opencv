@@ -90,9 +90,12 @@ int main(int argc, char **argv) {
     cv::Mat depth_image_ocv; // cpu opencv mat for display purposes
 #endif
     Mat point_cloud;
+    std::fstream file_out;
+    file_out.open(associationPath, std::ios_base::out);
 
     // Loop until 'q' is pressed
     char key = ' ';
+    int count = 0;
     while (key != 'q') {
 
         if (zed.grab(runtime_parameters) == ERROR_CODE::SUCCESS) {
@@ -112,12 +115,13 @@ int main(int argc, char **argv) {
 
             // Display image and depth using cv:Mat which share sl:Mat data
             cv::imshow("Image", image_ocv);
-            saveRgbDepth(zed);
+            saveRgbDepth(zed,file_out);
 #ifdef HAVE_CUDA
             // download the Ocv GPU data from Device to Host to be displayed
             depth_image_ocv_gpu.download(depth_image_ocv);
 #endif
             cv::imshow("Depth", depth_image_ocv);
+            count++;
 
             // Handle key event
             key = cv::waitKey(10);
@@ -130,6 +134,7 @@ int main(int argc, char **argv) {
     depth_image_zed_gpu.free();
 #endif
     zed.close();
+    file_out.close();
     return 0;
 }
 
