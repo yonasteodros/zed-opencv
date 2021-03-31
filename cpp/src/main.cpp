@@ -35,7 +35,7 @@
 #include <SaveDepth.hpp>
 
 using namespace sl;
-cv::Mat slMat2cvMat(Mat& input);
+cv::Mat slMat2cvMat_1(Mat& input);
 #ifdef HAVE_CUDA
 cv::cuda::GpuMat slMat2cvMatGPU(Mat& input);
 #endif // HAVE_CUDA
@@ -79,11 +79,11 @@ int main(int argc, char **argv) {
     // To share data between sl::Mat and cv::Mat, use slMat2cvMat()
     // Only the headers and pointer to the sl::Mat are copied, not the data itself
     Mat image_zed(new_width, new_height, MAT_TYPE::U8_C4);
-    cv::Mat image_ocv = slMat2cvMat(image_zed);
+    cv::Mat image_ocv = slMat2cvMat_1(image_zed);
 
 #ifndef HAVE_CUDA // If no cuda, use CPU memory
-    Mat depth_image_zed(new_width, new_height, MAT_TYPE::U8_C4);
-    cv::Mat depth_image_ocv = slMat2cvMat(depth_image_zed);
+    Mat depth_image_zed(new_width, new_height, MAT_TYPE::F32_C1);
+    cv::Mat depth_image_ocv = slMat2cvMat_1(depth_image_zed);
 #else
     Mat depth_image_zed_gpu(new_width, new_height, MAT_TYPE::U8_C4, sl::MEM::GPU); // alloc sl::Mat to store GPU depth image
     cv::cuda::GpuMat depth_image_ocv_gpu = slMat2cvMatGPU(depth_image_zed_gpu); // create an opencv GPU reference of the sl::Mat
@@ -111,7 +111,7 @@ int main(int argc, char **argv) {
 #endif
             // Retrieve the RGBA point cloud in half-resolution
             // To learn how to manipulate and display point clouds, see Depth Sensing sample
-            zed.retrieveMeasure(point_cloud, MEASURE::XYZRGBA, MEM::CPU, new_image_size);
+            //zed.retrieveMeasure(point_cloud, MEASURE::XYZRGBA, MEM::CPU, new_image_size);
 
             // Display image and depth using cv:Mat which share sl:Mat data
             cv::imshow("Image", image_ocv);
@@ -135,6 +135,7 @@ int main(int argc, char **argv) {
 #endif
     zed.close();
     file_out.close();
+    convertToKlg();
     return 0;
 }
 
@@ -158,7 +159,7 @@ int getOCVtype(sl::MAT_TYPE type) {
 /**
 * Conversion function between sl::Mat and cv::Mat
 **/
-cv::Mat slMat2cvMat(Mat& input) {
+cv::Mat slMat2cvMat_1(Mat& input) {
     // Since cv::Mat data requires a uchar* pointer, we get the uchar1 pointer from sl::Mat (getPtr<T>())
     // cv::Mat and sl::Mat will share a single memory structure
     return cv::Mat(input.getHeight(), input.getWidth(), getOCVtype(input.getDataType()), input.getPtr<sl::uchar1>(MEM::CPU), input.getStepBytes(sl::MEM::CPU));
