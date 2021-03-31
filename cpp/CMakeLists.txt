@@ -14,7 +14,8 @@ endif(COMMAND cmake_policy)
 
 SET(EXECUTABLE_OUTPUT_PATH ".")
 
-find_package(ZED 3 REQUIRED)
+find_package(ZED REQUIRED)
+set(OpenCV_DIR /usr/local/lib/cmake/opencv4)
 find_package(OpenCV REQUIRED)
 find_package(CUDA ${ZED_CUDA_VERSION} EXACT REQUIRED)
 

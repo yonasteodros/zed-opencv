@@ -51,7 +51,12 @@ void processKeyEvent(Camera& zed, char &key) {
     switch (key) {
         case 'd':
         case 'D':
-        saveDepth(zed, path + prefixDepth + to_string(count_save));
+        saveDepth(zed, depthPath + prefixDepth + to_string(count_save));
+        break;
+
+        case 'b':
+        case 'B':
+        saveRgbDepth(zed);
         break;
 
         case 'n': // Depth format
@@ -122,9 +127,40 @@ void saveDepth(Camera& zed, std::string filename) {
 		std::cout << "Failed to save depth map... Please check that you have permissions to write at this location (" << filename << "). Re-run the sample with administrator rights under windows" << endl;
 }
 
+void saveRgbDepth(Camera& zed) {
+    std::cout << "Saving Depth Map... " << flush;
+
+    sl::Mat depth;
+    sl::Mat image_sbs;
+
+    auto timestamp = zed.getTimestamp(sl::TIME_REFERENCE::IMAGE);
+
+    std::string depthFilename = depthPath + std::to_string(timestamp) + std::string(".png");
+    std::string rgbFilename = rgbPath + std::to_string(timestamp) + std::string(".png");
+
+    zed.retrieveMeasure(depth, sl::MEASURE::DEPTH);
+    zed.retrieveImage(image_sbs, sl::VIEW::LEFT);
+
+    convertUnit(depth, zed.getInitParameters().coordinate_units, UNIT::MILLIMETER);
+    auto state = depth.write((depthFilename).c_str());
+
+    if (state == ERROR_CODE::SUCCESS)
+        std::cout << "Depth Map has been save under " << depthFilename << endl;
+    else
+        std::cout << "Failed to save depth map... Please check that you have permissions to write at this location (" << depthFilename << "). Re-run the sample with administrator rights under windows" << endl;
+
+    state = image_sbs.write(rgbFilename.c_str());
+
+    if (state == sl::ERROR_CODE::SUCCESS)
+        std::cout << "image has been save under " << rgbFilename << endl;
+    else
+        std::cout << "Failed to save image... Please check that you have permissions to write at this location (" << rgbFilename << "). Re-run the sample with administrator rights under windows" << endl;
+
+}
+
 void saveSbSImage(Camera& zed, std::string filename) {
     sl::Mat image_sbs;
-    zed.retrieveImage(image_sbs, sl::VIEW::SIDE_BY_SIDE);
+    zed.retrieveImage(image_sbs, sl::VIEW::LEFT);
 
     auto state = image_sbs.write(filename.c_str());
 

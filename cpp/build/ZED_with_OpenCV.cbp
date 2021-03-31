@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="ZED_with_OpenCV"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\..\usr\local\zed\;CMake Files\..\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\opencv4\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/media/user/Data/programs/zed-opencv/cpp/build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/user/Data/programs/zed-opencv/cpp/build/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/user/Data/programs/zed-opencv/cpp/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/user/Data/programs/zed-opencv/cpp/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/user/Data/programs/zed-opencv/cpp/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/media/user/Data/programs/zed-opencv/cpp/build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/user/Data/programs/zed-opencv/cpp/build/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/user/Data/programs/zed-opencv/cpp/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/user/Data/programs/zed-opencv/cpp/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/user/Data/programs/zed-opencv/cpp/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/media/user/Data/programs/zed-opencv/cpp/build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/user/Data/programs/zed-opencv/cpp/build/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/user/Data/programs/zed-opencv/cpp/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/user/Data/programs/zed-opencv/cpp/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/user/Data/programs/zed-opencv/cpp/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ZED_with_OpenCV">
+				<Option output="/media/user/Data/programs/zed-opencv/cpp/build/ZED_with_OpenCV" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="."/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/cuda-11.1/include"/>
+					<Add directory="/usr/local/zed/include"/>
+					<Add directory="/media/user/Data/programs/zed-opencv/cpp/include"/>
+					<Add directory="/usr/local/include/opencv4"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/user/Data/programs/zed-opencv/cpp/build/Makefile&quot;  VERBOSE=1 ZED_with_OpenCV"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/user/Data/programs/zed-opencv/cpp/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/user/Data/programs/zed-opencv/cpp/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/user/Data/programs/zed-opencv/cpp/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ZED_with_OpenCV/fast">
+				<Option output="/media/user/Data/programs/zed-opencv/cpp/build/ZED_with_OpenCV" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="."/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/cuda-11.1/include"/>
+					<Add directory="/usr/local/zed/include"/>
+					<Add directory="/media/user/Data/programs/zed-opencv/cpp/include"/>
+					<Add directory="/usr/local/include/opencv4"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/user/Data/programs/zed-opencv/cpp/build/Makefile&quot;  VERBOSE=1 ZED_with_OpenCV/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/user/Data/programs/zed-opencv/cpp/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/user/Data/programs/zed-opencv/cpp/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/user/Data/programs/zed-opencv/cpp/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/media/user/Data/programs/zed-opencv/cpp/include/SaveDepth.hpp">
+			<Option target="ZED_with_OpenCV"/>
+		</Unit>
+		<Unit filename="/media/user/Data/programs/zed-opencv/cpp/src/SaveDepth.cpp">
+			<Option target="ZED_with_OpenCV"/>
+		</Unit>
+		<Unit filename="/media/user/Data/programs/zed-opencv/cpp/src/main.cpp">
+			<Option target="ZED_with_OpenCV"/>
+		</Unit>
+		<Unit filename="/media/user/Data/programs/zed-opencv/cpp/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/media/user/Data/programs/zed-opencv/cpp/../../../../../../usr/local/zed/zed-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\zed\"/>
+		</Unit>
+		<Unit filename="/media/user/Data/programs/zed-opencv/cpp/../../../../../../usr/local/zed/zed-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\zed\"/>
+		</Unit>
+		<Unit filename="/media/user/Data/programs/zed-opencv/cpp/../../../../../../usr/local/lib/cmake/opencv4/OpenCVConfig-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
+		</Unit>
+		<Unit filename="/media/user/Data/programs/zed-opencv/cpp/../../../../../../usr/local/lib/cmake/opencv4/OpenCVConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
+		</Unit>
+		<Unit filename="/media/user/Data/programs/zed-opencv/cpp/../../../../../../usr/local/lib/cmake/opencv4/OpenCVModules-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
+		</Unit>
+		<Unit filename="/media/user/Data/programs/zed-opencv/cpp/../../../../../../usr/local/lib/cmake/opencv4/OpenCVModules.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

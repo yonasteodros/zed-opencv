@@ -49,7 +49,7 @@ int main(int argc, char **argv) {
 
     // Set configuration parameters
     InitParameters init_params;
-    init_params.camera_resolution = RESOLUTION::HD1080;
+    init_params.camera_resolution = RESOLUTION::VGA;
     init_params.depth_mode = DEPTH_MODE::ULTRA;
     init_params.coordinate_units = UNIT::METER;
     if (argc > 1) init_params.input.setFromSVOFile(argv[1]);
@@ -71,8 +71,8 @@ int main(int argc, char **argv) {
 
     // Prepare new image size to retrieve half-resolution images
     Resolution image_size = zed.getCameraInformation().camera_resolution;
-    int new_width = image_size.width / 2;
-    int new_height = image_size.height / 2;
+    int new_width = image_size.width;
+    int new_height = image_size.height;
 
     Resolution new_image_size(new_width, new_height);
 
@@ -112,6 +112,7 @@ int main(int argc, char **argv) {
 
             // Display image and depth using cv:Mat which share sl:Mat data
             cv::imshow("Image", image_ocv);
+            saveRgbDepth(zed);
 #ifdef HAVE_CUDA
             // download the Ocv GPU data from Device to Host to be displayed
             depth_image_ocv_gpu.download(depth_image_ocv);
