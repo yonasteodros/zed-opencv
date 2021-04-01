@@ -1,12 +1,12 @@
-# Stereolabs ZED - OpenCV
+# Klg Logger from ZED camera
 
-This sample is the perfect place to get started coding with the ZED and OpenCV. It shows how to:
+This is a sample tool to fir logging and converting RGBD png images to klg format. It shows how to:
 
   - Capture image, depth and point cloud from the ZED.
   - Convert image and depth map to compatible 32-bits float OpenCV matrix.
   - Display video and depth with OpenCV.
   - Adjust several depth parameters: depth sensing mode, quality, units, resolution.
-  - Save side by side image, depth image and point cloud in various formats
+  - Save side by side image, depth image, klg file and point cloud in various formats
 
 ## Getting started
 
